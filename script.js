@@ -1,10 +1,9 @@
-
 console.log("welcome all")
 const inputBox=document.getElementById('input-box');
 const listContainer=document.getElementById("list-container");
 
 
-function AddTask(){
+function AddTask(){                          //addin todo task in the list
     if (inputBox.value === ''){
         alert("You must enter the task before adding");
     }
@@ -22,22 +21,22 @@ function AddTask(){
 
 listContainer.addEventListener("click",function(e){
     if(e.target.tagName === "LI"){
-        e.target.classList.toggle("checked");
+        e.target.classList.toggle("checked");               //toggling the tasks (chechikng or unchecking)
         saveData();
     }
-    else if(e.target.tagName === "SPAN"){
-        e.target.parentElement.remove();
+    else if(e.target.tagName === "SPAN"){                    
+        e.target.parentElement.remove();              //removing the tasks
         saveData();
     }
 },false);
 
-function saveData(){
+function saveData(){                //for saviing the tasks in localstorage of browser
     localStorage.setItem("data",listContainer.innerHTML);
     
 }
 
-function showTask(){
-    listContainer.innerHTML=localStorage.getItem("data");
+function showTask(){ //showing the todo  tasks
+    listContainer.innerHTML=localStorage.getItem("data"); 
     
 }
-showTask();
+showTask();   //initially rendering todo lists on ui 
